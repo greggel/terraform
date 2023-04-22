@@ -2,6 +2,7 @@
 variable "AWS_ACCESS_KEY" {}
 variable "AWS_SECRET_KEY" {}
 variable "AWS_REGION" {}
+variable "SSH_PUBLIC_KEY" {}
 
 provider "aws" {
   access_key = "${var.AWS_ACCESS_KEY}"
@@ -11,7 +12,7 @@ provider "aws" {
 
 resource "aws_key_pair" "greg-key" {
   key_name   = "greg-key"
-  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDf/pZJe2IPCdtBIbhbH9W+ntPPECAh+8DBg3tutPzjf6Pv0Tc9lS/u5HUT3TM0GuWNt9N/9vYR0qvL1efJ7gDN1g0KP01O4Z/YelcZL34ZnWYK8kbOcIQXk5hHzM2hIFpD6v7WLdVX6qoeJsJcZczEJ9cUQG2vhifT6Bt0PFoPZh7tqUOSPN9C1CRImDgFsj042N2YMbIBGbDvEsqL7p7SxfedeSvGtoJOS+zpJl6yJn5bnjPLi5Sk8B1FHpxeTnGnjSHQxOwYZEb7a0NA7oilK9e9Damj1LK5kp/UPN4ZdyA8FBYJRo0hdVmGsDpzogTOFGLknZ8BEEaiMjR7tY/p greggel@fugitive.home"
+  public_key = "${var.SSH_PUBLIC_KEY}"
 }
 
 resource "aws_instance" "example" {
